@@ -17,9 +17,9 @@
         <p class="lead">Come on and eat some Tacos!</p>
         <hr class="my-4">
         <p>They are HOT!</p>
-        <a class="btn btn-primary btn-lg" href="home.html" role="button">Home</a>
-        <a class="btn btn-secondary btn-lg" href="reserve.html" role="button">Make Reservation</a>
-        <a class="btn btn-success btn-lg" href="table.html" role="button">View Table</a>
+        <a class="btn btn-primary btn-lg" id="home-button" href="/" role="button">Home</a>
+        <a class="btn btn-secondary btn-lg" id="reserve-button" href="/reserve" role="button">Make Reservation</a>
+        <a class="btn btn-success btn-lg" id="table-button" href="/tables" role="button">View Table</a>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-header">
@@ -34,31 +34,31 @@
 
     <script type="text/javascript">
         $("#search-btn").on("click", function() {
-          var searchedCharacter = $("#character-search").val().trim();
+          var searchedtable = $("#table-search").val().trim();
     
-          // Using a RegEx Pattern to remove spaces from searchedCharacter
+          // Using a RegEx Pattern to remove spaces from searchedtable
           // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-          searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+          searchedtable = searchedtable.replace(/\s+/g, "").toLowerCase();
     
-          $.get("/api/characters/" + searchedCharacter, function(data) {
+          $.get("/tables/" + searchedtable, function(data) {
             console.log(data);
             if (data) {
               $("#stats").show();
-              $("#name").text(data.name);
-              $("#role").text(data.role);
-              $("#age").text(data.age);
-              $("#force-points").text(data.forcePoints);
+              $("#name").text(data.customerName);
+              $("#phone").text(data.phoneNumber);
+              $("#email").text(data.customerEmail);
+              $("#id").text(data.customerID);
             } else {
               $("#name").text(
-                "The force is not strong with this one. Your character was not found.");
+                "The force is not strong with this one. Your table was not found.");
               $("#stats").hide();
             }
           });
         });
+</script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
 </body>
 
 </html>

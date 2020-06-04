@@ -20,9 +20,9 @@
       <p class="lead">Come on and eat some Tacos!</p>
       <hr class="my-4">
       <p>They are HOT!</p>
-      <a class="btn btn-danger" id="home-button" href="home.html" role="button">Home</a>
-      <a class="btn btn-light" id="reserve-button" href="reserve.html" role="button">Make Reservation</a>
-      <a class="btn btn-success" id="table-button" href="table.html" role="button">View Table</a>
+      <a class="btn btn-danger" id="home-button" href="/" role="button">Home</a>
+      <a class="btn btn-light" id="reserve-button" href="/reserve" role="button">Make Reservation</a>
+      <a class="btn btn-success" id="table-button" href="/tables" role="button">View Table</a>
     </div>
 
     <div class="card">
@@ -46,18 +46,18 @@
     // Question: What does this code do?
     $("#add-btn").on("click", function (event) {
       event.preventDefault();
-      var newCharacter = {
-        name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+      var newtable = {
+        customerName: $("#name").val().trim(),
+        phoneNumber: $("#phone").val().trim(),
+        customerEmail: $("#email").val().trim(),
+        customerID: $("#id").val().trim()
       };
 
       // Question: What does this code do??
-      $.post("/api/characters", newCharacter)
+      $.post("/tables", newtable)
         .then(function (data) {
-          console.log("add.html", data);
-          alert("Adding character...");
+          console.log("tables.html", data);
+          alert("Adding table...");
         });
     });
 

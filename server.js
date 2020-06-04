@@ -16,20 +16,20 @@ let waitlist = [];
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 // Displays all tables
-app.get("/api/tables", function(req, res) {
-  return res.json(tables);
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Displays a single table, or returns false ** May not need this**
-app.get("/api/tables/:table", function(req, res) {
+app.get("/tables/:table", function(req, res) {
   let chosen = req.params.table;
 
   console.log(chosen);
@@ -44,7 +44,7 @@ app.get("/api/tables/:table", function(req, res) {
 });
 
 // Create New tables - takes in JSON input
-app.post("/api/tables", function(req, res) {
+app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   let newtable = req.body;
