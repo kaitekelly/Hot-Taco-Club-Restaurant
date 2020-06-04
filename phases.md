@@ -29,12 +29,27 @@ Note: We know this is a hard activity. We know you aren't yet comfortable with N
 * Create the front-end (visuals) for home page, reservation form, and reservation views.
 
 * Create a basic server using Express.JS
+frontend
 
 * Create a few array variables that will hold the data
 
 * Create a set of routes for getting and posting table data
 
 * Create a set of routes for displaying the HTML pages
+    -create server.js file with express
+
+* Create a few array variables that will hold the data
+    -create array for reserved patrons
+    -create array for waitlist patrons
+
+* Create a set of routes for getting and posting table data
+    -app.post - api for patrons
+    -app.listen for local host 3000
+
+* Create a set of routes for displaying the HTML pages
+    -app.get with res.sendFile
+
+master
 
 * Use jQuery to run AJAX calls to GET and POST data from users to the Express server
 
