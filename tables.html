@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Audiowide|Blinker' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Hot Taco Club</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Hot Taco Club</h1>
+        <p class="lead">Come on and eat some Tacos!</p>
+        <hr class="my-4">
+        <p>They are HOT!</p>
+        <a class="btn btn-primary btn-lg" href="home.html" role="button">Home</a>
+        <a class="btn btn-secondary btn-lg" href="reserve.html" role="button">Make Reservation</a>
+        <a class="btn btn-success btn-lg" href="table.html" role="button">View Table</a>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Featured
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+        </ul>
+    </div>
+
+
+
+    <script type="text/javascript">
+        $("#search-btn").on("click", function() {
+          var searchedCharacter = $("#character-search").val().trim();
+    
+          // Using a RegEx Pattern to remove spaces from searchedCharacter
+          // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+          searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+    
+          $.get("/api/characters/" + searchedCharacter, function(data) {
+            console.log(data);
+            if (data) {
+              $("#stats").show();
+              $("#name").text(data.name);
+              $("#role").text(data.role);
+              $("#age").text(data.age);
+              $("#force-points").text(data.forcePoints);
+            } else {
+              $("#name").text(
+                "The force is not strong with this one. Your character was not found.");
+              $("#stats").hide();
+            }
+          });
+        });
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+</body>
+
+</html>
